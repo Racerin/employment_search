@@ -14,6 +14,15 @@ class Testing(unittest.TestCase):
         assert 'Google' in lib.url_response("http://google.com"), lib.url_response("http://google.com")
         # Next time. Test failing input values.
 
+    def test_keyword_included(self):
+        assert lib.keyword_included("Monkey", 'monk')
+        assert lib.keyword_included("monkey", 'Monk')
+        with open("requirements.txt", "r") as file:
+            text = "\n".join(file.readlines())
+            assert lib.keyword_included(text, "numpy"), text
+            assert lib.keyword_included(text, "click"), text
+            assert lib.keyword_included(text, "panda"), text
+
 class TestConfig(unittest.TestCase):
 
     def test_config_data(self):

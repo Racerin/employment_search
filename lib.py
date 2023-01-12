@@ -42,8 +42,11 @@ def url_response(url:str) -> str:
     return text
 
 def keyword_included(str1:str, keyword:str)->bool:
-    """ Confirms or denys if keyword is in text. """
-    index = str1.find(keyword)
+    """ 
+    Confirms or denys if keyword is in text. 
+    Case insensitive
+    """
+    index = str1.lower().find(keyword.lower())
     return index != -1
 
 def search_spreadsheet_for_job(keyword):
