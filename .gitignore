@@ -1,1 +1,9 @@
+
+# Virtual environment
 venv*
+
+# Noise suppression
+*__pycache__
+
+# Security
+*/.env
