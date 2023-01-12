@@ -12,14 +12,19 @@ logging.basicConfig(
     # filename='example.log', 
     encoding='utf-8', level=logging.DEBUG)
 
-def read_config(file_name="config.json"):
+config = dict()
+
+def load_config(file_name="config.json"):
     """ Returns the config file information 
     NB. NOT IN USE AS YET
     """
+    global config
     with open(file_name, "r") as jsonfile:
         data = json.load(jsonfile)
         logging.debug("Config file loaded.")
+        config = data
         return data
+load_config()
 
 def gen_read_ministry_url(name='./employment links.xlsx') -> tuple:
     """ Open and extract data from excel file. """
