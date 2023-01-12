@@ -14,7 +14,7 @@ logging.basicConfig(
 
 config = dict()
 
-def load_config(file_name="config.json"):
+def load_config(file_name:str="config.json"):
     """ Returns the config file information 
     NB. NOT IN USE AS YET
     """
@@ -32,10 +32,11 @@ def gen_read_ministry_url(name='./employment links.xlsx') -> tuple:
     for ministry, url, *_ in df.values:
         yield (ministry, url)
 
-def url_response(url) -> str:
+def url_response(url:str) -> str:
     """ Return the http response for a given url """
     page = urlopen(url)
-    html = page.read().decode("utf-8")
+    # html = page.read().decode("utf-8")
+    html = page.read().decode("latin-1")
     soup = BeautifulSoup(html, "html.parser")
     text = soup.get_text()
     return text
